@@ -14,7 +14,8 @@
 
 DeprecatedString s_serenity_resource_root;
 
-static ErrorOr<void> platform_init() {
+static ErrorOr<void> platform_init()
+{
     s_serenity_resource_root = TRY([]() -> ErrorOr<DeprecatedString> {
         auto const* source_dir = getenv("SERENITY_SOURCE_DIR");
         if (source_dir) {
