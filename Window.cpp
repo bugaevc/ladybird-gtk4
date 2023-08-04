@@ -101,7 +101,6 @@ static void page_zoom_reset_action(GtkWidget* widget, [[maybe_unused]] char cons
     ladybird_web_view_zoom_reset(ladybird_window_get_current_page(self));
 }
 
-
 static void ladybird_window_init(LadybirdWindow* self)
 {
     GtkWidget* widget = GTK_WIDGET(self);

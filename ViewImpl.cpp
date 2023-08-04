@@ -257,8 +257,8 @@ void LadybirdViewImpl::notify_server_did_request_cursor_change(Badge<WebView::We
     case Gfx::StandardCursor::Disallowed:
         name = "not-allowed";
         break;
-    // case Gfx::StandardCursor::Eyedropper:
-    // case Gfx::StandardCursor::Zoom:
+        // case Gfx::StandardCursor::Eyedropper:
+        // case Gfx::StandardCursor::Zoom:
     }
 
     gtk_widget_set_cursor_from_name(GTK_WIDGET(m_widget), name);
