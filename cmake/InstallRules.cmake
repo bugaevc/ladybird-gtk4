@@ -3,7 +3,7 @@ include(GNUInstallDirs)
 
 set(package ladybird)
 
-install(TARGETS LibAudio LibCore LibFileSystem LibGfx LibIPC LibJS LibWeb LibWebView LibWebSocket LibProtocol LibGUI LibMarkdown LibGemini LibHTTP LibGL LibSoftGPU LibVideo LibWasm LibXML LibIDL LibTextCodec LibCrypto LibLocale LibRegex LibSyntax LibUnicode LibCompress LibTLS LibGLSL LibGPU LibThreading
+install(TARGETS LibAudio LibCore LibFileSystem LibGfx LibIPC LibJS LibWeb LibWebView LibWebSocket LibProtocol LibGUI LibMarkdown LibGemini LibHTTP LibGL LibSoftGPU LibVideo LibWasm LibXML LibIDL LibTextCodec LibCrypto LibLocale LibRegex LibSyntax LibUnicode LibCompress LibTLS LibGLSL LibGPU LibThreading LibSQL
   EXPORT ladybirdTargets
   LIBRARY
     COMPONENT ladybird_Runtime
