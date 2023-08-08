@@ -1,0 +1,9 @@
+.flatpak-builder
+.clangd
+build/
+Build/
+
+subprojects/*
+!subprojects/gtk.wrap
+!subprojects/adwaita.wrap
+!subprojects/blueprint-compiler.wrap

@@ -10,7 +10,8 @@
         "--share=network",
         "--socket=fallback-x11",
         "--socket=wayland",
-        "--socket=pulseaudio"
+        "--socket=pulseaudio",
+        "--socket=session-bus"
     ],
     "cleanup": [
         "blueprint*",
@@ -29,23 +30,33 @@
             ]
         },
         {
-            "name": "Ladybird",
+            "name": "lagom",
             "buildsystem": "cmake-ninja",
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/SerenityOS/serenity.git",
-                    "dest": "serenity"
+                    "url": "https://github.com/ADKaster/serenity.git",
+                    "branch": "ladybird-options"
                 },
                 {
-                    "type": "git",
-                    "url": "https://github.com/bugaevc/ladybird-gtk4.git"
+                    "type": "patch",
+                    "path": "patches/0001-CMake-Include-Lagom-at-top-level.patch"
                 }
             ],
-            "config-opts": ["-DSERENITY_SOURCE_DIR=serenity"],
+            "config-opts": [ "-DBUILD_LAGOM=ON", "-DENABLE_LAGOM_LADYBIRD=ON", "-DENABLE_QT=OFF" ],
             "build-options": {
                 "build-args": ["--share=network"]
             }
+        },
+        {
+            "name": "Ladybird",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "."
+                }
+            ]
         }
     ]
 }
