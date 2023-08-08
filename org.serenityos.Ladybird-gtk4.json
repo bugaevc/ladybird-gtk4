@@ -30,23 +30,33 @@
             ]
         },
         {
-            "name": "Ladybird",
+            "name": "lagom",
             "buildsystem": "cmake-ninja",
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/SerenityOS/serenity.git",
-                    "dest": "serenity"
+                    "url": "https://github.com/ADKaster/serenity.git",
+                    "branch": "ladybird-options"
                 },
+                {
+                    "type": "patch",
+                    "path": "patches/0001-CMake-Include-Lagom-at-top-level.patch"
+                }
+            ],
+            "config-opts": [ "-DBUILD_LAGOM=ON", "-DENABLE_LAGOM_LADYBIRD=ON", "-DENABLE_QT=OFF" ],
+            "build-options": {
+                "build-args": ["--share=network"]
+            }
+        },
+        {
+            "name": "Ladybird",
+            "buildsystem": "cmake-ninja",
+            "sources": [
                 {
                     "type": "dir",
                     "path": "."
                 }
-            ],
-            "config-opts": ["-DSERENITY_SOURCE_DIR=serenity"],
-            "build-options": {
-                "build-args": ["--share=network"]
-            }
+            ]
         }
     ]
 }
