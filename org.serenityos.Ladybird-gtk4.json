@@ -30,7 +30,7 @@
             ]
         },
         {
-            "name": "Ladybird",
+            "name": "lagom",
             "buildsystem": "cmake-ninja",
             "sources": [
                 {
@@ -75,25 +75,37 @@
                         "echo -n 15.0.0 > Caches/UCD/version.txt",
                         "echo -n 43.1.0 > Caches/CLDR/version.txt",
                         "echo -n 2023c > Caches/TZDB/version.txt",
-                        "echo -n 2023-05-30 > Caches/CACERT/version.txt",
-                        "# FIXME Is there an easier way to set an absolute path in config-opts?",
-                        "echo set\\(SERENITY_CACHE_DIR \"$PWD/Caches\" CACHE STRING \\\"\\\"\\) > Cache.cmake"
+                        "echo -n 2023-05-30 > Caches/CACERT/version.txt"
                     ]
                 },
                 {
                     "type": "git",
                     "url": "https://github.com/SerenityOS/serenity.git",
-                    "dest": "serenity"
+                    "branch": "master"
                 },
+                {
+                    "type": "patch",
+                    "path": "patches/0001-CMake-Include-Lagom-at-top-level.patch"
+                }
+            ],
+            "config-opts": [
+                "-DBUILD_LAGOM=ON",
+                "-DENABLE_LAGOM_LADYBIRD=ON",
+                "-DENABLE_QT=OFF",
+                "-DSERENITY_CACHE_DIR=Caches",
+                "-DENABLE_NETWORK_DOWNLOADS=OFF",
+                "-DENABLE_COMMONMARK_SPEC_DOWNLOAD=OFF"
+            ]
+        },
+        {
+            "name": "Ladybird",
+            "buildsystem": "cmake-ninja",
+            "sources": [
                 {
                     "type": "dir",
                     "path": "."
                 }
-            ],
-            "config-opts": [ "-DSERENITY_SOURCE_DIR=serenity", "-CCache.cmake" ],
-            "build-options": {
-                "build-args": ["--share=network"]
-            }
+            ]
         }
     ]
 }
