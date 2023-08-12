@@ -62,3 +62,34 @@ flatpak run --user org.serenityos.Ladybird-gtk4
 
 If you are only modifying the ladybird-gtk4 files, then adding the `--keep-build-dirs` flag will help
 reduce churn for the serenity components. The `--ccache` flag is essentially mandatory to reduce incremental build times.
+
+### Building without Flatpak
+
+With the required development libraries on your build system already, `cmake` can be used directly to setup a build.
+
+First, install serenity's Lagom package into a local directory
+
+```sh
+# from /path/to/serenity
+cmake -GNinja -S Meta/Lagom -B Build/lagom \
+    -DBUILD_LAGOM=ON \
+    -DENABLE_LAGOM_LADYBIRD=ON \
+    -DENABLE_QT=OFF \
+    -DCMAKE_INSTALL_PREFIX=Build/lagom-install
+ninja -C Build/lagom install
+```
+
+Next, configure the ladybird-gtk4 project, pointing it to the installed Lagom package
+
+```sh
+# from project root
+cmake -GNinja -B build \
+    -DCMAKE_PREFIX_PATH=/path/to/serenity/lagom-install \
+    -DCMAKE_INSTALL_PREFIX=/path/to/serenity/lagom-install
+ninja -C build install
+```
+
+With the ladybird-gtk4 package installed into the same directory structure as Lagom and the upstream ladybird components,
+the `/path/to/serenity/lagom-install/bin/ladybird` binary can be launched to run the application.
+
+If you make any changes to your serenity checkout, remember to re-install the lagom package.
