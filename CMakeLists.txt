@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.23)
 project(ladybird-gtk4
   VERSION 1.0.0
   LANGUAGES C CXX
@@ -18,22 +18,10 @@ find_program(GLIB_COMPILE_RESOURCES NAMES glib-compile-resources REQUIRED)
 
 find_program(BLUEPRINT_COMPILER NAMES blueprint-compiler REQUIRED)
 
-set(LAGOM_SOURCE_DIR "${SERENITY_SOURCE_DIR}/Meta/Lagom")
-set(LAGOM_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/Lagom")
+find_package(Threads REQUIRED)
+find_package(Lagom CONFIG REQUIRED)
+find_package(ladybird CONFIG REQUIRED)
 
-include("${SERENITY_SOURCE_DIR}/Meta/CMake/lagom_compile_options.cmake")
-
-set(BUILD_LAGOM ON CACHE INTERNAL "")
-set(ENABLE_LAGOM_LIBWEB ON CACHE INTERNAL "")
-# We set EXCLUDE_FROM_ALL to make sure that only required Lagom libraries are built
-add_subdirectory("${LAGOM_SOURCE_DIR}" "${LAGOM_BINARY_DIR}" EXCLUDE_FROM_ALL)
-# FIXME: Why doesn't Lagom do this?
-include_directories(
-    "${SERENITY_SOURCE_DIR}"
-    "${SERENITY_SOURCE_DIR}/Userland/Libraries"
-    "${LAGOM_BINARY_DIR}"
-    "${LAGOM_BINARY_DIR}/Userland/Libraries"
-)
 add_compile_definitions(AK_DONT_REPLACE_STD)
 
 set(RESOURCE_FILES)
@@ -83,43 +71,20 @@ set(SOURCES
     WebView.cpp
     ViewImpl.cpp
     EventLoopImplementationGLib.cpp
-    "${SERENITY_SOURCE_DIR}/Ladybird/Utilities.cpp"
-    "${SERENITY_SOURCE_DIR}/Ladybird/HelperProcess.cpp"
     $<TARGET_OBJECTS:resources>
 )
 
 add_executable(ladybird ${SOURCES})
-target_link_libraries(ladybird PRIVATE PkgConfig::gtk4 PkgConfig::libadwaita Lagom::Core Lagom::WebView Lagom::Gfx Lagom::Web Lagom::IPC Lagom::FileSystem Lagom::SQL Lagom::Protocol)
+target_link_libraries(ladybird PRIVATE PkgConfig::gtk4 PkgConfig::libadwaita ladybird::ladybird Lagom::Core Lagom::WebView Lagom::Gfx Lagom::Web Lagom::IPC Lagom::FileSystem Lagom::SQL Lagom::Protocol)
 
-include_directories(
-    "${SERENITY_SOURCE_DIR}/Userland/Services"
-)
-
-set(WEBCONTENT_SOURCE_DIR "${SERENITY_SOURCE_DIR}/Userland/Services/WebContent")
-set(WEBCONTENT_SOURCES
-    "${WEBCONTENT_SOURCE_DIR}/ConnectionFromClient.cpp"
-    "${WEBCONTENT_SOURCE_DIR}/ConsoleGlobalEnvironmentExtensions.cpp"
-    "${WEBCONTENT_SOURCE_DIR}/PageHost.cpp"
-    "${WEBCONTENT_SOURCE_DIR}/WebContentConsoleClient.cpp"
-    "${WEBCONTENT_SOURCE_DIR}/WebDriverConnection.cpp"
-    "${SERENITY_SOURCE_DIR}/Ladybird/FontPlugin.cpp"
-    "${SERENITY_SOURCE_DIR}/Ladybird/HelperProcess.cpp"
-    "${SERENITY_SOURCE_DIR}/Ladybird/ImageCodecPlugin.cpp"
-    "${SERENITY_SOURCE_DIR}/Ladybird/Utilities.cpp"
-    WebContentMain.cpp
-)
-if (libsoup_FOUND)
-    set(WEBCONTENT_SOURCES
-        RequestManagerSoup.cpp
-        EventLoopImplementationGLib.cpp
-        ${WEBCONTENT_SOURCES}
-    )
-endif()
-
-add_executable(WebContent ${WEBCONTENT_SOURCES})
-target_link_libraries(WebContent PRIVATE Lagom::Audio Lagom::Core Lagom::FileSystem Lagom::Gfx Lagom::IPC Lagom::JS Lagom::Main Lagom::Web Lagom::WebSocket Lagom::WebView Lagom::Protocol)
+add_executable(WebContent WebContentMain.cpp)
+target_link_libraries(WebContent PRIVATE ladybird::webcontent Lagom::Audio Lagom::Core Lagom::FileSystem Lagom::Gfx Lagom::IPC Lagom::JS Lagom::Main Lagom::Web Lagom::WebSocket Lagom::WebView Lagom::Protocol)
 if (libsoup_FOUND)
     target_link_libraries(WebContent PRIVATE PkgConfig::libsoup)
+    target_sources(WebContent PRIVATE
+        RequestManagerSoup.cpp
+        EventLoopImplementationGLib.cpp
+    )
 endif()
 
 if (NOT CMAKE_SKIP_INSTALL_RULES)
