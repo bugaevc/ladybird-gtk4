@@ -10,8 +10,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(PkgConfig)
-pkg_check_modules(gtk4 REQUIRED IMPORTED_TARGET gtk4>=4.11.3)
-pkg_check_modules(libadwaita REQUIRED IMPORTED_TARGET libadwaita-1>=1.4)
+pkg_check_modules(gtk4 REQUIRED IMPORTED_TARGET gtk4)
+pkg_check_modules(libadwaita REQUIRED IMPORTED_TARGET libadwaita-1)
 pkg_check_modules(libsoup IMPORTED_TARGET libsoup-3.0)
 
 find_program(GLIB_COMPILE_RESOURCES NAMES glib-compile-resources REQUIRED)
