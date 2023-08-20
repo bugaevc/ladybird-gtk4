@@ -1,11 +1,11 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $LadybirdTab : Widget {
+template LadybirdTab : Widget {
   Overlay overlay {
     ScrolledWindow {
-      $LadybirdWebView web_view {
-        notify::hovered-link => $on_hovered_link_change(template) swapped;
+      .LadybirdWebView web_view {
+        notify::hovered-link => on_hovered_link_change(LadybirdTab) swapped;
         styles ["view"]
       }
     }
@@ -21,8 +21,8 @@ template $LadybirdTab : Widget {
   }
 
   EventControllerMotion {
-    enter => $on_motion(template) swapped;
-    motion => $on_motion(template) swapped;
-    leave => $on_leave(template) swapped;
+    enter => on_motion(LadybirdTab) swapped;
+    motion => on_motion(LadybirdTab) swapped;
+    leave => on_leave(LadybirdTab) swapped;
   }
 }

@@ -11,9 +11,12 @@ struct _LadybirdWindow {
     AdwTabOverview* tab_overview;
     AdwTabView* tab_view;
     GtkEntry* url_entry;
+    GtkLabel* zoom_percent_label;
 
     AdwTabPage* menu_page;
     LadybirdWebView* last_selected_web_view;
+
+    GBinding* zoom_percent_binding;
 
     gulong page_url_changed_id;
     bool incognito;
@@ -34,6 +37,8 @@ G_DEFINE_FINAL_TYPE(LadybirdWindow, ladybird_window, ADW_TYPE_APPLICATION_WINDOW
 static void ladybird_window_dispose(GObject* object)
 {
     LadybirdWindow* self = LADYBIRD_WINDOW(object);
+
+    g_clear_object(&self->zoom_percent_binding);
 
     if (self->last_selected_web_view && self->page_url_changed_id)
         g_signal_handler_disconnect(self->last_selected_web_view, self->page_url_changed_id);
@@ -298,6 +303,9 @@ static void on_selected_page_changed(LadybirdWindow* self)
 
     self->page_url_changed_id = g_signal_connect_object(web_view, "notify::page-url", G_CALLBACK(on_page_url_changed), self, G_CONNECT_SWAPPED);
     on_page_url_changed(self);
+
+    g_clear_object(&self->zoom_percent_binding);
+    self->zoom_percent_binding = g_object_bind_property(web_view, "zoom-percent", self->zoom_percent_label, "label", G_BINDING_SYNC_CREATE);
 }
 
 static void page_zoom_in_action(GtkWidget* widget, [[maybe_unused]] char const* action_name, [[maybe_unused]] GVariant* param)
@@ -377,6 +385,7 @@ static void ladybird_window_class_init(LadybirdWindowClass* klass)
     gtk_widget_class_bind_template_child(widget_class, LadybirdWindow, tab_overview);
     gtk_widget_class_bind_template_child(widget_class, LadybirdWindow, tab_view);
     gtk_widget_class_bind_template_child(widget_class, LadybirdWindow, url_entry);
+    gtk_widget_class_bind_template_child(widget_class, LadybirdWindow, zoom_percent_label);
     gtk_widget_class_bind_template_callback(widget_class, on_create_tab);
     gtk_widget_class_bind_template_callback(widget_class, on_url_entered);
     gtk_widget_class_bind_template_callback(widget_class, on_create_window);
