@@ -17,7 +17,7 @@ void ladybird_web_view_set_page_url(LadybirdWebView* self, char const* url);
 
 void ladybird_web_view_load_url(LadybirdWebView* self, char const* url);
 
-const char* ladybird_web_view_get_hovered_link(LadybirdWebView* self);
+char const* ladybird_web_view_get_hovered_link(LadybirdWebView* self);
 void ladybird_web_view_set_hovered_link(LadybirdWebView* self, char const* hovered_link);
 
 bool ladybird_web_view_get_loading(LadybirdWebView* self);

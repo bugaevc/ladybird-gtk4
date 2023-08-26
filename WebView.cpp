@@ -121,7 +121,7 @@ void ladybird_web_view_set_loading(LadybirdWebView* self, bool loading)
     g_object_notify_by_pspec(G_OBJECT(self), props[PROP_LOADING]);
 }
 
-const char* ladybird_web_view_get_hovered_link(LadybirdWebView* self)
+char const* ladybird_web_view_get_hovered_link(LadybirdWebView* self)
 {
     g_return_val_if_fail(LADYBIRD_IS_WEB_VIEW(self), nullptr);
 
