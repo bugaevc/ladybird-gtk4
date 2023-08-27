@@ -1,6 +1,7 @@
 #include "Window.h"
 #include "Application.h"
 #include "BitmapPaintable.h"
+#include "LocationEntry.h"
 #include "Tab.h"
 #include "WebView.h"
 #include <glib/gi18n.h>
@@ -347,9 +348,9 @@ void ladybird_window_open_file(LadybirdWindow* self, GFile* file)
 
 static char* format_zoom_percent_label([[maybe_unused]] void* instance, int zoom_percent)
 {
-  // Translators: this is a format string for the zoom-percent label in the main menu.
-  // For most languages, it doesn't need translating.
-  return g_strdup_printf(_("%d%%"), zoom_percent);
+    // Translators: this is a format string for the zoom-percent label in the main menu.
+    // For most languages, it doesn't need translating.
+    return g_strdup_printf(_("%d%%"), zoom_percent);
 }
 
 static void ladybird_window_init(LadybirdWindow* self)
@@ -357,6 +358,7 @@ static void ladybird_window_init(LadybirdWindow* self)
     GtkWidget* widget = GTK_WIDGET(self);
     g_type_ensure(LADYBIRD_TYPE_TAB);
     g_type_ensure(LADYBIRD_TYPE_WEB_VIEW);
+    g_type_ensure(LADYBIRD_TYPE_LOCATION_ENTRY);
     gtk_widget_init_template(widget);
 }
 
