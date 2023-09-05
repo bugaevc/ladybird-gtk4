@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ladybird wip\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-03 14:55+0300\n"
+"POT-Creation-Date: 2023-09-04 00:52+0300\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,60 +13,60 @@ msgstr ""
 
 #. Translators: this is a format string for the zoom-percent label in the main menu.
 #. For most languages, it doesn't need translating.
-#: Window.cpp:410
+#: src/Window.cpp:410
 #, c-format
 msgid "%d%%"
 msgstr ""
 
-#: window.blp:148 window.blp:247
+#: res/window.blp:148 res/window.blp:247
 msgid "Bookmarks"
 msgstr "Закладки"
 
-#: window.blp:51
+#: res/window.blp:51
 msgid "Bookmarks & History"
 msgstr "Закладки и история"
 
-#: Tab.cpp:215 Tab.cpp:239
+#: src/Tab.cpp:215 src/Tab.cpp:239
 msgid "Cancel"
 msgstr "Отменить"
 
-#: window.blp:37
+#: res/window.blp:37
 msgid "Close _Other Tabs"
 msgstr "Закрыть _остальные вкладки"
 
-#: shortcuts-dialog.blp:61
+#: res/shortcuts-dialog.blp:61
 msgid "Close current tab"
 msgstr "Закрыть текущую вкладку"
 
-#: Tab.cpp:216
+#: src/Tab.cpp:216
 msgid "Confirm"
 msgstr "Подтвердить"
 
-#: Tab.cpp:240
+#: src/Tab.cpp:240
 msgid "Enter"
 msgstr "Ввести"
 
-#: js-console.blp:12
+#: res/js-console.blp:12
 msgid "Enter a JavaScript expression to evaluate"
 msgstr "Введите JavaScript-выражение для вычисления"
 
-#: Window.cpp:154
+#: src/Window.cpp:154
 msgid "Failed to pick file"
 msgstr "Не удалось выбрать файл"
 
-#: shortcuts-dialog.blp:48
+#: res/shortcuts-dialog.blp:48
 msgid "Focus location entry"
 msgstr "Сфокусировать поле ввода адреса"
 
-#: shortcuts-dialog.blp:8
+#: res/shortcuts-dialog.blp:8
 msgid "General"
 msgstr "Общие"
 
-#: Tab.cpp:48 window.blp:16
+#: src/Tab.cpp:48 res/window.blp:16
 msgid "JavaScript Console"
 msgstr "Консоль JavaScript"
 
-#: Application.cpp:66
+#: src/Application.cpp:66
 msgid ""
 "Ladybird is a browser based on LibWeb web engine and LibJS JavaScript "
 "engine, developed by a large team of contributors as a part of the "
@@ -75,214 +75,214 @@ msgstr ""
 "Ladybird — это браузер, основанный на веб-движке LibWeb и JavaScript-движке "
 "LibJS, развиваемый большой командой участников как часть проекта SerenityOS."
 
-#: window.blp:161
+#: res/window.blp:161
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: window.blp:100 window.blp:223
+#: res/window.blp:100 res/window.blp:223
 msgid "Navigate Back"
 msgstr "Назад"
 
-#: window.blp:106 window.blp:229
+#: res/window.blp:106 res/window.blp:229
 msgid "Navigate Forward"
 msgstr "Вперёд"
 
-#: shortcuts-dialog.blp:36
+#: res/shortcuts-dialog.blp:36
 msgid "Navigate back"
 msgstr "Назад"
 
-#: shortcuts-dialog.blp:40
+#: res/shortcuts-dialog.blp:40
 msgid "Navigate forward"
 msgstr "Вперёд"
 
-#: shortcuts-dialog.blp:33
+#: res/shortcuts-dialog.blp:33
 msgid "Navigation"
 msgstr "Навигация"
 
-#: window.blp:118
+#: res/window.blp:118
 msgid "New Tab"
 msgstr "Новая вкладка"
 
-#: window.blp:11 window.blp:43
+#: res/window.blp:11 res/window.blp:43
 msgid "New _Incognito Window"
 msgstr "Новое окно _инкогнито"
 
-#: shortcuts-dialog.blp:15
+#: res/shortcuts-dialog.blp:15
 msgid "New incognito window"
 msgstr "Новое окно инкогнито"
 
-#: Window.cpp:81 shortcuts-dialog.blp:57
+#: src/Window.cpp:81 res/shortcuts-dialog.blp:57
 msgid "New tab"
 msgstr "Новая вкладка"
 
-#: shortcuts-dialog.blp:11
+#: res/shortcuts-dialog.blp:11
 msgid "New window"
 msgstr "Новое окно"
 
-#: shortcuts-dialog.blp:65
+#: res/shortcuts-dialog.blp:65
 msgid "Next tab"
 msgstr "Следующая вкладка"
 
-#: Window.cpp:156 Tab.cpp:194
+#: src/Window.cpp:156 src/Tab.cpp:194
 msgid "OK"
 msgstr "ОК"
 
-#: shortcuts-dialog.blp:19
+#: res/shortcuts-dialog.blp:19
 msgid "Open file"
 msgstr "Открыть файл"
 
 #. Translators: this is a menu item for pinning a tab.
-#: window.blp:26
+#: res/window.blp:26
 msgid "P_in"
 msgstr "_Закрепить"
 
-#: Application.cpp:188
+#: src/Application.cpp:188
 msgid "Path to WebDriver IPC for WebContent"
 msgstr "Путь к WebDriver IPC для WebContent"
 
-#: shortcuts-dialog.blp:69
+#: res/shortcuts-dialog.blp:69
 msgid "Previous tab"
 msgstr "Предыдущая вкладка"
 
-#: shortcuts-dialog.blp:27
+#: res/shortcuts-dialog.blp:27
 msgid "Quit"
 msgstr "Выйти"
 
-#: window.blp:112 window.blp:235
+#: res/window.blp:112 res/window.blp:235
 msgid "Reload Page"
 msgstr "Перезагрузить страницу"
 
-#: shortcuts-dialog.blp:44
+#: res/shortcuts-dialog.blp:44
 msgid "Reload current page"
 msgstr "Перезагрузить текущую страницу"
 
-#: shortcuts-dialog.blp:87
+#: res/shortcuts-dialog.blp:87
 msgid "Reset zoom"
 msgstr "Восстановить масштаб"
 
-#: window.blp:179
+#: res/window.blp:179
 msgid "Restore Zoom"
 msgstr "Восстановить масштаб"
 
-#: Application.cpp:49
+#: src/Application.cpp:49
 msgid "Sam Atkins"
 msgstr "Сэм Эткинс"
 
 #. Translators: this is the placeholder text for the main location entry.
-#: window.blp:131
+#: res/window.blp:131
 msgid "Search or enter a URL to open…"
 msgstr "Введите URL или поисковый запрос…"
 
-#: Application.cpp:57
+#: src/Application.cpp:57
 msgid "SerenityOS developers"
 msgstr "Разрабочики SerenityOS"
 
-#: Application.cpp:70
+#: src/Application.cpp:70
 msgid "SerenityOS website"
 msgstr "Веб-сайт SerenityOS"
 
 #. Translators: Сергей Бугаев in Cyrillic
-#: Application.cpp:44
+#: src/Application.cpp:44
 msgid "Sergey Bugaev"
 msgstr "Сергей Бугаев"
 
-#: shortcuts-dialog.blp:23
+#: res/shortcuts-dialog.blp:23
 msgid "Show shortcuts"
 msgstr "Комбинации клавиш"
 
-#: window.blp:155
+#: res/window.blp:155
 msgid "Tab Overview"
 msgstr "Обзор вкладок"
 
-#: shortcuts-dialog.blp:54
+#: res/shortcuts-dialog.blp:54
 msgid "Tabs"
 msgstr "Вкладки"
 
 #. Translators: this is a menu item for unpinning a tab.
-#: window.blp:32
+#: res/window.blp:32
 msgid "Unp_in"
 msgstr "_Открепить"
 
-#: Tab.cpp:192
+#: src/Tab.cpp:192
 msgid "Web page alerts:"
 msgstr "Веб-страница предупреждает:"
 
-#: Tab.cpp:237
+#: src/Tab.cpp:237
 msgid "Web page asks for input:"
 msgstr "Веб-страница запрашивает ввод:"
 
-#: Tab.cpp:213
+#: src/Tab.cpp:213
 msgid "Web page asks you to confirm:"
 msgstr "Веб-страница запрашивает подтверждение:"
 
-#: shortcuts-dialog.blp:75
+#: res/shortcuts-dialog.blp:75
 msgid "Zoom"
 msgstr "Масштаб"
 
-#: window.blp:189
+#: res/window.blp:189
 msgid "Zoom In"
 msgstr "Увеличить масштаб"
 
-#: window.blp:174
+#: res/window.blp:174
 msgid "Zoom Out"
 msgstr "Уменьшить масштаб"
 
-#: shortcuts-dialog.blp:78
+#: res/shortcuts-dialog.blp:78
 msgid "Zoom in"
 msgstr "Увеличить масштаб"
 
-#: shortcuts-dialog.blp:83
+#: res/shortcuts-dialog.blp:83
 msgid "Zoom out"
 msgstr "Уменьшить масштаб"
 
-#: window.blp:18 window.blp:46
+#: res/window.blp:18 res/window.blp:46
 msgid "_About Ladybird"
 msgstr "О Ladybird"
 
-#: window.blp:38
+#: res/window.blp:38
 msgid "_Close"
 msgstr "_Закрыть"
 
-#: window.blp:23
+#: res/window.blp:23
 msgid "_Duplicate"
 msgstr "_Дублировать"
 
-#: window.blp:13 window.blp:45
+#: res/window.blp:13 res/window.blp:45
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбинации клавиш"
 
-#: window.blp:36
+#: res/window.blp:36
 msgid "_Move to New Window"
 msgstr "Переместить в _другое окно"
 
-#: window.blp:10 window.blp:42
+#: res/window.blp:10 res/window.blp:42
 msgid "_New Window"
 msgstr "_Новое окно"
 
-#: window.blp:12 window.blp:44
+#: res/window.blp:12 res/window.blp:44
 msgid "_Open File"
 msgstr "_Открыть файл"
 
-#: window.blp:22
+#: res/window.blp:22
 msgid "_Reload"
 msgstr "_Перезагрузить"
 
-#: window.blp:15
+#: res/window.blp:15
 msgid "_Tools"
 msgstr "_Инструменты"
 
 #. Translators: credit yourself here :^)
-#: Application.cpp:65
+#: src/Application.cpp:65
 msgid "translator_credits"
 msgstr "Сергей Бугаев"
 
-#: Application.cpp:60
+#: src/Application.cpp:60
 msgid "© 2023 SerenityOS developers"
 msgstr "© 2023 Разработчики SerenityOS"
 
 #. Translators: this is a placeholder content for the Bookmarks & History
 #. popover; it will go away once we implement it, so you can skip translating
 #. it. But it also doesn't hurt to translate it either, if you want to.
-#: window.blp:55
+#: res/window.blp:55
 msgid "…will appear here, once we implement them :^)"
 msgstr "…будут здесь, когда мы их реализуем :^)"

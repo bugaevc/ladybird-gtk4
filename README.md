@@ -54,7 +54,7 @@ flatpak install --user org.gnome.Platform//master org.gnome.Sdk//master
 
 ```sh
 # Build and install the application to your local Flatpak installation
-flatpak-builder --user --install --force-clean --ccache build org.serenityos.Ladybird-gtk4.json 
+flatpak-builder --user --install --force-clean --ccache build build-aux/org.serenityos.Ladybird-gtk4.json 
 
 # Run the app
 flatpak run --user org.serenityos.Ladybird-gtk4

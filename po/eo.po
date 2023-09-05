@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ladybird wip\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-03 14:55+0300\n"
+"POT-Creation-Date: 2023-09-04 00:52+0300\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,60 +12,60 @@ msgstr ""
 
 #. Translators: this is a format string for the zoom-percent label in the main menu.
 #. For most languages, it doesn't need translating.
-#: Window.cpp:410
+#: src/Window.cpp:410
 #, c-format
 msgid "%d%%"
 msgstr ""
 
-#: window.blp:148 window.blp:247
+#: res/window.blp:148 res/window.blp:247
 msgid "Bookmarks"
 msgstr "Legosignoj"
 
-#: window.blp:51
+#: res/window.blp:51
 msgid "Bookmarks & History"
 msgstr "Legosignoj kaj Historio"
 
-#: Tab.cpp:215 Tab.cpp:239
+#: src/Tab.cpp:215 src/Tab.cpp:239
 msgid "Cancel"
 msgstr ""
 
-#: window.blp:37
+#: res/window.blp:37
 msgid "Close _Other Tabs"
 msgstr "Fermi _aliajn langetojn"
 
-#: shortcuts-dialog.blp:61
+#: res/shortcuts-dialog.blp:61
 msgid "Close current tab"
 msgstr "Fermi aktualan langeton"
 
-#: Tab.cpp:216
+#: src/Tab.cpp:216
 msgid "Confirm"
 msgstr ""
 
-#: Tab.cpp:240
+#: src/Tab.cpp:240
 msgid "Enter"
 msgstr ""
 
-#: js-console.blp:12
+#: res/js-console.blp:12
 msgid "Enter a JavaScript expression to evaluate"
 msgstr "Entajpi Ĝavoskriptan esprimon por plenumi"
 
-#: Window.cpp:154
+#: src/Window.cpp:154
 msgid "Failed to pick file"
 msgstr "Malsukcesis elekti dosieron"
 
-#: shortcuts-dialog.blp:48
+#: res/shortcuts-dialog.blp:48
 msgid "Focus location entry"
 msgstr "Enfokusigi lokan enskribigon"
 
-#: shortcuts-dialog.blp:8
+#: res/shortcuts-dialog.blp:8
 msgid "General"
 msgstr "Ĝenerala"
 
-#: Tab.cpp:48 window.blp:16
+#: src/Tab.cpp:48 res/window.blp:16
 msgid "JavaScript Console"
 msgstr "Ĝavoskripta konzolo"
 
-#: Application.cpp:66
+#: src/Application.cpp:66
 msgid ""
 "Ladybird is a browser based on LibWeb web engine and LibJS JavaScript "
 "engine, developed by a large team of contributors as a part of the "
@@ -75,214 +75,214 @@ msgstr ""
 "Ĝavoskripto-motoro, estigita de granda teamo kontribuantoj kiel parto de la "
 "SerenityOS-projekto."
 
-#: window.blp:161
+#: res/window.blp:161
 msgid "Main Menu"
 msgstr "Ĉefa menuo"
 
-#: window.blp:100 window.blp:223
+#: res/window.blp:100 res/window.blp:223
 msgid "Navigate Back"
 msgstr "Navigi malantaŭ"
 
-#: window.blp:106 window.blp:229
+#: res/window.blp:106 res/window.blp:229
 msgid "Navigate Forward"
 msgstr "Navigi antaŭ"
 
-#: shortcuts-dialog.blp:36
+#: res/shortcuts-dialog.blp:36
 msgid "Navigate back"
 msgstr "Navigi malantaŭ"
 
-#: shortcuts-dialog.blp:40
+#: res/shortcuts-dialog.blp:40
 msgid "Navigate forward"
 msgstr "Navigi antaŭ"
 
-#: shortcuts-dialog.blp:33
+#: res/shortcuts-dialog.blp:33
 msgid "Navigation"
 msgstr "Navigado"
 
-#: window.blp:118
+#: res/window.blp:118
 msgid "New Tab"
 msgstr "Nova langeto"
 
-#: window.blp:11 window.blp:43
+#: res/window.blp:11 res/window.blp:43
 msgid "New _Incognito Window"
 msgstr "Nova _inkognita fenestro"
 
-#: shortcuts-dialog.blp:15
+#: res/shortcuts-dialog.blp:15
 msgid "New incognito window"
 msgstr "Nova inkognita fenestro"
 
-#: Window.cpp:81 shortcuts-dialog.blp:57
+#: src/Window.cpp:81 res/shortcuts-dialog.blp:57
 msgid "New tab"
 msgstr "Nova langeto"
 
-#: shortcuts-dialog.blp:11
+#: res/shortcuts-dialog.blp:11
 msgid "New window"
 msgstr "Nova fenestro"
 
-#: shortcuts-dialog.blp:65
+#: res/shortcuts-dialog.blp:65
 msgid "Next tab"
 msgstr "Sekva langeto"
 
-#: Window.cpp:156 Tab.cpp:194
+#: src/Window.cpp:156 src/Tab.cpp:194
 msgid "OK"
 msgstr "Bone"
 
-#: shortcuts-dialog.blp:19
+#: res/shortcuts-dialog.blp:19
 msgid "Open file"
 msgstr "Malfermi dosieron"
 
 #. Translators: this is a menu item for pinning a tab.
-#: window.blp:26
+#: res/window.blp:26
 msgid "P_in"
 msgstr "Al_pingli"
 
-#: Application.cpp:188
+#: src/Application.cpp:188
 msgid "Path to WebDriver IPC for WebContent"
 msgstr ""
 
-#: shortcuts-dialog.blp:69
+#: res/shortcuts-dialog.blp:69
 msgid "Previous tab"
 msgstr "Antaŭa langeto"
 
-#: shortcuts-dialog.blp:27
+#: res/shortcuts-dialog.blp:27
 msgid "Quit"
 msgstr "Ĉesi"
 
-#: window.blp:112 window.blp:235
+#: res/window.blp:112 res/window.blp:235
 msgid "Reload Page"
 msgstr "Reŝargi paĝon"
 
-#: shortcuts-dialog.blp:44
+#: res/shortcuts-dialog.blp:44
 msgid "Reload current page"
 msgstr "Reŝargi aktualan paĝon"
 
-#: shortcuts-dialog.blp:87
+#: res/shortcuts-dialog.blp:87
 msgid "Reset zoom"
 msgstr "Reagordi zomon"
 
-#: window.blp:179
+#: res/window.blp:179
 msgid "Restore Zoom"
 msgstr "Restaŭri zomon"
 
-#: Application.cpp:49
+#: src/Application.cpp:49
 msgid "Sam Atkins"
 msgstr "Sam Atkins"
 
 #. Translators: this is the placeholder text for the main location entry.
-#: window.blp:131
+#: res/window.blp:131
 msgid "Search or enter a URL to open…"
 msgstr "Serĉi aŭ entajpi URL-on…"
 
-#: Application.cpp:57
+#: src/Application.cpp:57
 msgid "SerenityOS developers"
 msgstr "La programistoj de SerenityOS"
 
-#: Application.cpp:70
+#: src/Application.cpp:70
 msgid "SerenityOS website"
 msgstr "La retejo de SerenityOS"
 
 #. Translators: Сергей Бугаев in Cyrillic
-#: Application.cpp:44
+#: src/Application.cpp:44
 msgid "Sergey Bugaev"
 msgstr "Sergey Bugaev"
 
-#: shortcuts-dialog.blp:23
+#: res/shortcuts-dialog.blp:23
 msgid "Show shortcuts"
 msgstr "Montri klavkombinoj"
 
-#: window.blp:155
+#: res/window.blp:155
 msgid "Tab Overview"
 msgstr "Langeta superrigardo"
 
-#: shortcuts-dialog.blp:54
+#: res/shortcuts-dialog.blp:54
 msgid "Tabs"
 msgstr "Langetoj"
 
 #. Translators: this is a menu item for unpinning a tab.
-#: window.blp:32
+#: res/window.blp:32
 msgid "Unp_in"
 msgstr "De_pingli"
 
-#: Tab.cpp:192
+#: src/Tab.cpp:192
 msgid "Web page alerts:"
 msgstr ""
 
-#: Tab.cpp:237
+#: src/Tab.cpp:237
 msgid "Web page asks for input:"
 msgstr ""
 
-#: Tab.cpp:213
+#: src/Tab.cpp:213
 msgid "Web page asks you to confirm:"
 msgstr ""
 
-#: shortcuts-dialog.blp:75
+#: res/shortcuts-dialog.blp:75
 msgid "Zoom"
 msgstr "Zomi"
 
-#: window.blp:189
+#: res/window.blp:189
 msgid "Zoom In"
 msgstr "Zomi"
 
-#: window.blp:174
+#: res/window.blp:174
 msgid "Zoom Out"
 msgstr "Malzomi"
 
-#: shortcuts-dialog.blp:78
+#: res/shortcuts-dialog.blp:78
 msgid "Zoom in"
 msgstr "Zomi"
 
-#: shortcuts-dialog.blp:83
+#: res/shortcuts-dialog.blp:83
 msgid "Zoom out"
 msgstr "Malzomi"
 
-#: window.blp:18 window.blp:46
+#: res/window.blp:18 res/window.blp:46
 msgid "_About Ladybird"
 msgstr "_Pri Ladybird"
 
-#: window.blp:38
+#: res/window.blp:38
 msgid "_Close"
 msgstr "_Fermi"
 
-#: window.blp:23
+#: res/window.blp:23
 msgid "_Duplicate"
 msgstr "_Duobligi"
 
-#: window.blp:13 window.blp:45
+#: res/window.blp:13 res/window.blp:45
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavkombinoj"
 
-#: window.blp:36
+#: res/window.blp:36
 msgid "_Move to New Window"
 msgstr "_Movi al nova fenestro"
 
-#: window.blp:10 window.blp:42
+#: res/window.blp:10 res/window.blp:42
 msgid "_New Window"
 msgstr "_Nova fenestro"
 
-#: window.blp:12 window.blp:44
+#: res/window.blp:12 res/window.blp:44
 msgid "_Open File"
 msgstr "_Malfermi dosieron"
 
-#: window.blp:22
+#: res/window.blp:22
 msgid "_Reload"
 msgstr "_Reŝargi"
 
-#: window.blp:15
+#: res/window.blp:15
 msgid "_Tools"
 msgstr ""
 
 #. Translators: credit yourself here :^)
-#: Application.cpp:65
+#: src/Application.cpp:65
 msgid "translator_credits"
 msgstr "Beckett Normington"
 
-#: Application.cpp:60
+#: src/Application.cpp:60
 msgid "© 2023 SerenityOS developers"
 msgstr "© 2023 La programistoj de SerenityOS"
 
 #. Translators: this is a placeholder content for the Bookmarks & History
 #. popover; it will go away once we implement it, so you can skip translating
 #. it. But it also doesn't hurt to translate it either, if you want to.
-#: window.blp:55
+#: res/window.blp:55
 msgid "…will appear here, once we implement them :^)"
 msgstr "…aperos ĉi tie, post kiam ni realigos ilin :^)"

@@ -87,7 +87,7 @@
                 },
                 {
                     "type": "dir",
-                    "path": "."
+                    "path": ".."
                 }
             ],
             "config-opts": [ "-DSERENITY_SOURCE_DIR=serenity", "-CCache.cmake" ],
