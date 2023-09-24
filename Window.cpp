@@ -353,7 +353,7 @@ static void on_webview_close(LadybirdWindow* self, LadybirdWebView* web_view)
     g_assert(LADYBIRD_IS_WEB_VIEW(web_view));
 
     // No point in calling this twice.
-    g_signal_handlers_disconnect_by_func(web_view, reinterpret_cast<void *>(on_webview_close), self);
+    g_signal_handlers_disconnect_by_func(web_view, reinterpret_cast<void*>(on_webview_close), self);
 
     AdwTabPage* tab_page = adw_tab_view_get_page(self->tab_view, GTK_WIDGET(web_view));
     // TODO: This will not close pinned pages. We probably should ask the user before closing anyway,
@@ -381,7 +381,7 @@ static void on_tab_page_detached(LadybirdWindow* self, AdwTabPage* tab_page, [[m
     g_assert(ADW_IS_TAB_PAGE(tab_page));
 
     LadybirdWebView* web_view = get_web_view_from_tab_page(tab_page);
-    g_signal_handlers_disconnect_by_func(web_view, reinterpret_cast<void *>(on_webview_close), self);
+    g_signal_handlers_disconnect_by_func(web_view, reinterpret_cast<void*>(on_webview_close), self);
 }
 
 static void page_zoom_in_action(GtkWidget* widget, [[maybe_unused]] char const* action_name, [[maybe_unused]] GVariant* param)
