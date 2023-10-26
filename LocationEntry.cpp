@@ -1,4 +1,5 @@
 #include "LocationEntry.h"
+#include "LocationSuggestions.h"
 #include <AK/ScopeGuard.h>
 #include <AK/String.h>
 #include <AK/StringView.h>
@@ -13,6 +14,11 @@
 
 struct _LadybirdLocationEntry {
     GtkEntry parent_instance;
+
+    GtkEventControllerFocus* focus_controller;
+    GtkPopover* suggestions_popover;
+    GtkListView* suggestions_list_view;
+    LadybirdLocationSuggestions* suggestions_model;
 };
 
 enum {
@@ -125,6 +131,14 @@ static void on_notify_text(LadybirdLocationEntry* self)
     update_primary_icon(self);
 }
 
+static void on_text_changed(LadybirdLocationEntry* self)
+{
+    if (!gtk_event_controller_focus_contains_focus(self->focus_controller))
+        return;
+
+    gtk_popover_popup(self->suggestions_popover);
+}
+
 static void ladybird_location_entry_measure(GtkWidget* widget, GtkOrientation orientation, int for_size, int* minimum, int* natural, int* minimum_baseline, int* natural_baseline)
 {
     // Workaround a GTK bug, which your version of GTK may or may not have.
@@ -133,6 +147,42 @@ static void ladybird_location_entry_measure(GtkWidget* widget, GtkOrientation or
     // just unset the baseline to work around that.
     GTK_WIDGET_CLASS(ladybird_location_entry_parent_class)->measure(widget, orientation, for_size, minimum, natural, minimum_baseline, natural_baseline);
     *minimum_baseline = *natural_baseline = -1;
+}
+
+static void ladybird_location_entry_size_allocate(GtkWidget* widget, int width, int height, int baseline)
+{
+    LadybirdLocationEntry* self = LADYBIRD_LOCATION_ENTRY(widget);
+
+    GTK_WIDGET_CLASS(ladybird_location_entry_parent_class)->size_allocate(widget, width, height, baseline);
+    GtkWidget* popover_contents = gtk_widget_get_first_child(GTK_WIDGET(self->suggestions_popover));
+    graphene_rect_t bounds;
+    bool computed = gtk_widget_compute_bounds(widget, widget, &bounds);
+    g_assert(computed);
+    gtk_widget_set_size_request(popover_contents, bounds.size.width, -1);
+}
+
+static void on_suggestion_activate(LadybirdLocationEntry* self, guint position)
+{
+    gtk_popover_popdown(self->suggestions_popover);
+    (void)position;
+}
+
+static void on_focus_leave(LadybirdLocationEntry* self)
+{
+    gtk_popover_popdown(self->suggestions_popover);
+}
+
+static gboolean on_escape(GtkWidget* widget, [[maybe_unused]] GVariant* args, [[maybe_unused]] void* data)
+{
+    LadybirdLocationEntry* self = LADYBIRD_LOCATION_ENTRY(widget);
+
+    if (gtk_widget_get_visible(GTK_WIDGET(self->suggestions_popover))) {
+        gtk_popover_popdown(self->suggestions_popover);
+        return true;
+    }
+
+    // Should give the focus to the WebView here.
+    return false;
 }
 
 static void ladybird_location_entry_init(LadybirdLocationEntry* self)
@@ -157,9 +207,19 @@ static void ladybird_location_entry_class_init(LadybirdLocationEntryClass* klass
     object_class->dispose = ladybird_location_entry_dispose;
 
     widget_class->measure = ladybird_location_entry_measure;
+    widget_class->size_allocate = ladybird_location_entry_size_allocate;
 
     gtk_widget_class_set_template_from_resource(widget_class, "/org/serenityos/Ladybird-gtk4/location-entry.ui");
+    gtk_widget_class_bind_template_child(widget_class, LadybirdLocationEntry, focus_controller);
+    gtk_widget_class_bind_template_child(widget_class, LadybirdLocationEntry, suggestions_popover);
+    gtk_widget_class_bind_template_child(widget_class, LadybirdLocationEntry, suggestions_list_view);
+    gtk_widget_class_bind_template_child(widget_class, LadybirdLocationEntry, suggestions_model);
     gtk_widget_class_bind_template_callback(widget_class, on_notify_text);
+    gtk_widget_class_bind_template_callback(widget_class, on_text_changed);
+    gtk_widget_class_bind_template_callback(widget_class, on_suggestion_activate);
+    gtk_widget_class_bind_template_callback(widget_class, on_focus_leave);
+
+    gtk_widget_class_add_binding(widget_class, GDK_KEY_Escape, GdkModifierType(0), on_escape, nullptr);
 }
 
 G_END_DECLS

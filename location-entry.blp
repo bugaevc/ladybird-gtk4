@@ -3,5 +3,62 @@ using Gtk 4.0;
 template $LadybirdLocationEntry : Entry {
   input-purpose: url;
   secondary-icon-name: "non-starred-symbolic";
+  changed => $on_text_changed(template) swapped;
   notify::text => $on_notify_text(template) swapped;
+
+  EventControllerFocus focus_controller {
+    leave => $on_focus_leave(template) swapped;
+  }
+
+  Popover suggestions_popover {
+    // Unset autohide to keep the focus on the entry itself.
+    // We hide the popover explicitly when we lose focus.
+    autohide: false;
+    has-arrow: false;
+
+    ScrolledWindow {
+      hscrollbar-policy: never;
+      propagate-natural-height: true;
+
+      ListView suggestions_list_view {
+        single-click-activate: true;
+        activate => $on_suggestion_activate(template) swapped;
+
+        model: SingleSelection {
+          model: $LadybirdLocationSuggestions suggestions_model {
+              text: bind template.text;
+          };
+        };
+
+        factory: BuilderListItemFactory {
+          template ListItem {
+            child: Box {
+              orientation: horizontal;
+              spacing: 6;
+
+              Image {
+                icon-name: "non-starred-symbolic";
+              }
+              Box {
+                hexpand: true;
+                orientation: vertical;
+                Label {
+                  label: bind template.item as <$LadybirdHistoryEntry>.title;
+                  xalign: 0;
+                  single-line-mode: true;
+                  ellipsize: end;
+                }
+                Label {
+                  label: bind template.item as <$LadybirdHistoryEntry>.url;
+                  xalign: 0;
+                  ellipsize: end;
+                  styles ["dim-label"]
+                }
+              }
+            };
+          }
+        };
+      }
+    }
+  }
 }

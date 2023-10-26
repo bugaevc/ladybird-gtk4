@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ladybird wip\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-10 01:57+0200\n"
+"POT-Creation-Date: 2023-10-26 17:46+0300\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -170,6 +170,11 @@ msgstr "Återställ zoom"
 #: Application.cpp:49
 msgid "Sam Atkins"
 msgstr "Sam Atkins"
+
+#: LocationSuggestions.cpp:107
+#, c-format
+msgid "Search %s for “%s”"
+msgstr ""
 
 #. Translators: this is the placeholder text for the main location entry.
 #: window.blp:188
