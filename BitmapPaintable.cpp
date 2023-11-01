@@ -69,6 +69,12 @@ void ladybird_bitmap_paintable_push_bitmap(LadybirdBitmapPaintable* self, Gfx::B
     case Gfx::BitmapFormat::RGBA8888:
         format = GDK_MEMORY_R8G8B8A8;
         break;
+    // GDK_MEMORY_B8G8R8X8 added in GTK 4.14
+#ifdef GDK_MEMORY_B8G8R8X8
+    case Gfx::BitmapFormat::BGRx8888:
+        format = GDK_MEMORY_B8G8R8X8;
+        break;
+#endif
     default:
         VERIFY_NOT_REACHED();
     }
