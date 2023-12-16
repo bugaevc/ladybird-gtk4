@@ -27,22 +27,22 @@ LadybirdViewImpl::LadybirdViewImpl(LadybirdWebView* widget)
             true);
     };
 
-    on_title_change = [this](DeprecatedString const& title) {
+    on_title_change = [this](ByteString const& title) {
         ladybird_web_view_set_page_title(m_widget, title.characters());
     };
     on_load_start = [this](AK::URL const& url, bool is_redirect) {
-        DeprecatedString url_string = url.serialize();
+        ByteString url_string = url.serialize();
         ladybird_web_view_on_load_start(m_widget, url_string.characters(), is_redirect);
     };
     on_load_finish = [this](AK::URL const& url) {
-        DeprecatedString url_string = url.serialize();
+        ByteString url_string = url.serialize();
         ladybird_web_view_on_load_finish(m_widget, url_string.characters());
     };
 
     on_get_all_cookies = [this](AK::URL const& url) {
         return cookie_jar().get_all_cookies(url);
     };
-    on_get_named_cookie = [this](AK::URL const& url, DeprecatedString const& name) {
+    on_get_named_cookie = [this](AK::URL const& url, ByteString const& name) {
         return cookie_jar().get_named_cookie(url, name);
     };
     on_get_cookie = [this](AK::URL const& url, Web::Cookie::Source source) {
@@ -78,7 +78,7 @@ LadybirdViewImpl::LadybirdViewImpl(LadybirdWebView* widget)
     };
 
     on_link_hover = [this](AK::URL const& url) {
-        DeprecatedString url_string = url.serialize();
+        ByteString url_string = url.serialize();
         ladybird_web_view_set_hovered_link(m_widget, url_string.characters());
     };
     on_link_unhover = [this]() {
@@ -86,16 +86,16 @@ LadybirdViewImpl::LadybirdViewImpl(LadybirdWebView* widget)
     };
 
     on_request_alert = [this](AK::String const& message) {
-        ladybird_web_view_request_alert(m_widget, message.to_deprecated_string().characters());
+        ladybird_web_view_request_alert(m_widget, message.to_byte_string().characters());
     };
     on_request_confirm = [this](AK::String const& message) {
-        ladybird_web_view_request_confirm(m_widget, message.to_deprecated_string().characters());
+        ladybird_web_view_request_confirm(m_widget, message.to_byte_string().characters());
     };
     on_request_prompt = [this](AK::String const& message, AK::String const& text) {
-        ladybird_web_view_request_prompt(m_widget, message.to_deprecated_string().characters(), text.to_deprecated_string().characters());
+        ladybird_web_view_request_prompt(m_widget, message.to_byte_string().characters(), text.to_byte_string().characters());
     };
     on_request_set_prompt_text = [this](AK::String const& text) {
-        ladybird_web_view_set_prompt_text(m_widget, text.to_deprecated_string().characters());
+        ladybird_web_view_set_prompt_text(m_widget, text.to_byte_string().characters());
     };
     on_request_accept_dialog = [this]() {
         ladybird_web_view_request_accept_dialog(m_widget);
@@ -104,7 +104,7 @@ LadybirdViewImpl::LadybirdViewImpl(LadybirdWebView* widget)
         ladybird_web_view_request_dismiss_dialog(m_widget);
     };
 
-    on_link_click = [this](AK::URL const& url, DeprecatedString const& target, unsigned modifiers) {
+    on_link_click = [this](AK::URL const& url, ByteString const& target, unsigned modifiers) {
         bool switch_to_new_tab = false;
         if (modifiers & Mod_Ctrl) {
             // switch_to_new_tab = very false;
@@ -116,7 +116,7 @@ LadybirdViewImpl::LadybirdViewImpl(LadybirdWebView* widget)
         }
         ladybird_web_view_activate_url(m_widget, url.serialize().characters(), switch_to_new_tab);
     };
-    on_link_middle_click = [this](AK::URL const& url, [[maybe_unused]] DeprecatedString const& target, [[maybe_unused]] unsigned modifiers) {
+    on_link_middle_click = [this](AK::URL const& url, [[maybe_unused]] ByteString const& target, [[maybe_unused]] unsigned modifiers) {
         ladybird_web_view_activate_url(m_widget, url.serialize().characters(), true);
     };
     on_request_color_picker = [this](Gfx::Color current_color) {
@@ -151,7 +151,7 @@ LadybirdViewImpl::LadybirdViewImpl(LadybirdWebView* widget)
     on_insert_clipboard_entry = [this](AK::String const& data, [[maybe_unused]] AK::String const& presentation_style, AK::String const& mime_type) {
         GdkClipboard* clipboard = gtk_widget_get_clipboard(GTK_WIDGET(m_widget));
         GBytes* bytes = g_bytes_new(data.bytes().data(), data.bytes().size());
-        GdkContentProvider* content_provider = gdk_content_provider_new_for_bytes(mime_type.to_deprecated_string().characters(), bytes);
+        GdkContentProvider* content_provider = gdk_content_provider_new_for_bytes(mime_type.to_byte_string().characters(), bytes);
         g_bytes_unref(bytes);
         gdk_clipboard_set_content(clipboard, content_provider);
         g_object_unref(content_provider);
@@ -218,7 +218,7 @@ void LadybirdViewImpl::create_client(WebView::EnableCallgrindProfiling enable_ca
 
 void LadybirdViewImpl::update_theme()
 {
-    auto theme = Gfx::load_system_theme(DeprecatedString::formatted("{}/Base/res/themes/Default.ini", getenv("SERENITY_SOURCE_DIR"))).release_value_but_fixme_should_propagate_errors();
+    auto theme = Gfx::load_system_theme(ByteString::formatted("{}/Base/res/themes/Default.ini", getenv("SERENITY_SOURCE_DIR"))).release_value_but_fixme_should_propagate_errors();
     auto palette_impl = Gfx::PaletteImpl::create_with_anonymous_buffer(theme);
     auto palette = Gfx::Palette(move(palette_impl));
 
