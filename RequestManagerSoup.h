@@ -15,8 +15,8 @@ private:
     virtual void prefetch_dns(AK::URL const&) override { }
     virtual void preconnect(AK::URL const&) override { }
     virtual RefPtr<Web::ResourceLoaderConnectorRequest> start_request(
-        DeprecatedString const& method, AK::URL const&,
-        HashMap<DeprecatedString, DeprecatedString> const& request_headers,
+        ByteString const& method, AK::URL const&,
+        HashMap<ByteString, ByteString> const& request_headers,
         ReadonlyBytes request_body, Core::ProxyData const&) override;
 
     SoupSession* m_session { nullptr };
@@ -26,8 +26,8 @@ class RequestSoup final : public Web::ResourceLoaderConnectorRequest {
 public:
     virtual ~RequestSoup() override;
     static ErrorOr<NonnullRefPtr<RequestSoup>> create(SoupSession* session,
-        DeprecatedString const& method, AK::URL const&,
-        HashMap<DeprecatedString, DeprecatedString> const& request_headers,
+        ByteString const& method, AK::URL const&,
+        HashMap<ByteString, ByteString> const& request_headers,
         ReadonlyBytes request_body, Core::ProxyData const&);
 
 private:

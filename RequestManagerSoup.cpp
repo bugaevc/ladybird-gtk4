@@ -21,8 +21,8 @@ RequestManagerSoup::~RequestManagerSoup()
 }
 
 RefPtr<Web::ResourceLoaderConnectorRequest> RequestManagerSoup::start_request(
-    DeprecatedString const& method, AK::URL const& url,
-    HashMap<DeprecatedString, DeprecatedString> const& request_headers,
+    ByteString const& method, AK::URL const& url,
+    HashMap<ByteString, ByteString> const& request_headers,
     ReadonlyBytes request_body, Core::ProxyData const& proxy)
 {
     if (!url.scheme().bytes_as_string_view().is_one_of_ignoring_ascii_case("http"sv, "https"sv))
@@ -80,7 +80,7 @@ void RequestSoup::complete(GBytes* bytes, GError* error)
     ReadonlyBytes body { g_bytes_get_data(bytes, nullptr), g_bytes_get_size(bytes) };
 
     struct Closure {
-        HashMap<DeprecatedString, DeprecatedString, CaseInsensitiveStringTraits> response_headers;
+        HashMap<ByteString, ByteString, CaseInsensitiveStringTraits> response_headers;
         JsonArray set_cookies;
     };
     Closure closure;
@@ -97,15 +97,15 @@ void RequestSoup::complete(GBytes* bytes, GError* error)
         },
         &closure);
 
-    closure.response_headers.set("Set-Cookie", move(closure.set_cookies).to_deprecated_string());
+    closure.response_headers.set("Set-Cookie", move(closure.set_cookies).to_byte_string());
     on_buffered_request_finish(true, g_bytes_get_size(bytes), move(closure.response_headers), status_code, body);
     // FIXME: Is this it? Are we expected to drop the bytes here?
     g_bytes_unref(bytes);
 }
 
 ErrorOr<NonnullRefPtr<RequestSoup>> RequestSoup::create(SoupSession* session,
-    DeprecatedString const& method, AK::URL const& url,
-    HashMap<DeprecatedString, DeprecatedString> const& request_headers,
+    ByteString const& method, AK::URL const& url,
+    HashMap<ByteString, ByteString> const& request_headers,
     ReadonlyBytes request_body, [[maybe_unused]] Core::ProxyData const& proxy)
 {
     char const* soup_method;
@@ -123,7 +123,7 @@ ErrorOr<NonnullRefPtr<RequestSoup>> RequestSoup::create(SoupSession* session,
         soup_method = method.characters();
     }
 
-    SoupMessage* message = soup_message_new(soup_method, url.to_deprecated_string().characters());
+    SoupMessage* message = soup_message_new(soup_method, url.to_byte_string().characters());
     SoupMessageHeaders* soup_headers = soup_message_get_request_headers(message);
 
     for (auto& it : request_headers) {

@@ -1,5 +1,5 @@
 #include "EventLoopImplementationGLib.h"
-#include <AK/DeprecatedString.h>
+#include <AK/ByteString.h>
 #include <Ladybird/FontPlugin.h>
 #include <Ladybird/HelperProcess.h>
 #include <Ladybird/ImageCodecPlugin.h>
